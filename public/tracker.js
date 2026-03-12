@@ -2,7 +2,7 @@
 
 function send(type,data){
 
-fetch("https://deine-domain.vercel.app/api/track",{
+fetch("https://analytics-platform-seven.vercel.app/api/track",{
 method:"POST",
 headers:{
 "Content-Type":"application/json"
@@ -36,4 +36,3 @@ scroll:window.scrollY
 send("pageview",{})
 
 })();
-
