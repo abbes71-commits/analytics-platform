@@ -27,6 +27,19 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* client-side script removes extension-injected attributes to avoid hydration errors */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (typeof window !== 'undefined') {
+                const html = document.documentElement;
+                html.removeAttribute('data-darkreader-mode');
+                html.removeAttribute('data-darkreader-scheme');
+                html.removeAttribute('data-darkreader-proxy-injected');
+              }
+            `,
+          }}
+        />
         {children}
       </body>
     </html>
